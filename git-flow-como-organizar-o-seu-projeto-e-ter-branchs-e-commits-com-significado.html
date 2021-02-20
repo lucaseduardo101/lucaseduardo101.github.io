@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://lucaseduardo101.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://lucaseduardo101.github.io/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://lucaseduardo101.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="https://lucaseduardo101.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Lucas Oliveira Atom">
+
+
+
+
+
+<meta name="author" content="Lucas Oliveira" />
+<meta name="description" content="O que é o GitFlow? Um framework que descreve como criar e gerenciar branches em projetos de TI. Develop e Master Branches Ao invés de apenas uma branch, o workflow utiliza duas branches para salvar o histórico do projeto. A master armazena o histórico oficial das releases e a develop …" />
+<meta name="keywords" content="">
+
+<meta property="og:site_name" content="Lucas Oliveira"/>
+<meta property="og:title" content="Git Flow - Como organizar o seu projeto e ter branchs e commits com significado"/>
+<meta property="og:description" content="O que é o GitFlow? Um framework que descreve como criar e gerenciar branches em projetos de TI. Develop e Master Branches Ao invés de apenas uma branch, o workflow utiliza duas branches para salvar o histórico do projeto. A master armazena o histórico oficial das releases e a develop …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://lucaseduardo101.github.io/git-flow-como-organizar-o-seu-projeto-e-ter-branchs-e-commits-com-significado.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-05-03 11:01:00-03:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://lucaseduardo101.github.io/author/lucas-oliveira.html">
+<meta property="article:section" content="Boas práticas"/>
+<meta property="og:image" content="https://lucaseduardo101.github.io//profile.png">
+
+  <title>Lucas Oliveira &ndash; Git Flow - Como organizar o seu projeto e ter branchs e commits com significado</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://lucaseduardo101.github.io">
+        <img src="https://lucaseduardo101.github.io//profile.png" alt="" title="">
+      </a>
+      <h1><a href="https://lucaseduardo101.github.io"></a></h1>
+
+
+      <nav>
+        <ul class="list">
+
+          <li><a href="/category/blog.html" target="_blank">Blog</a></li>
+          <li><a href="/category/boas-praticas.html" target="_blank">Boas práticas</a></li>
+          <li><a href="/category/kotlin.html" target="_blank">Kotlin</a></li>
+          <li><a href="/category/RPA.html" target="_blank">RPA</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/lucas-oliveira-711b712a/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/lucaseduardo101" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/lukseduardo101" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://lucaseduardo101.github.io">    Home
+</a>
+
+      <a href="/pages/about.html">About</a>
+      <a href="http://www.google.com/recaptcha/mailhide/d?...">Email</a>
+      <a href="/pdfs/HouserCV.pdf">Vita</a>
+
+      <a href="https://lucaseduardo101.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="git-flow-como-organizar-o-seu-projeto-e-ter-branchs-e-commits-com-significado">Git Flow - Como organizar o seu projeto e ter branchs e commits com significado</h1>
+    <p>
+          Posted on dom 03 maio 2020 in <a href="https://lucaseduardo101.github.io/category/boas-praticas.html">Boas práticas</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>O que é o GitFlow?
+Um framework que descreve como criar e gerenciar branches em projetos de TI.</p>
+<p>Develop e Master Branches
+Ao invés de apenas uma branch, o workflow utiliza duas branches para salvar o histórico do projeto. A master armazena o histórico oficial das releases e a develop realiza as integrações com as novas features que são implementadas.</p>
+<p>A branch master armazena o histórico de releases e tem a versão final de produção. Nunca devemos desenvolver diretamente na master.</p>
+<p>A branch develop é usada para integrar com as novas features/bugs. Todo o histórico de commits ficam armazenados na develop. </p>
+<p>Por padrão os projetos do Git já possuem uma branch Master, então nós só precisamos adicionar a branch developer. Para fazer isso execute o comando abaixo:</p>
+<p>git checkout -b develop</p>
+<p>Feature/Bug Branches</p>
+<p>Para cada nova feature/bug se deve criar uma nova branch. Quando o desenvolvimento da feature está completo, fazer merge com a branch develop.
+features/bugs nunca devem ser mergeadas diretamente na master.</p>
+<p>Como criar uma nova branch
+git checkout develop
+git checkout –b feature/new_feature</p>
+<p>Quando concluir o desenvolvimento, copiar a branch para a branch develop
+git checkout develop
+git merge feature/new_feature</p>
+<p>Release Branches
+Uma feature já é suficiente para criar uma release, mas nada impede de unir várias features em uma.
+Release é um “pacote fechado” que já pode ser levado para produção. </p>
+<p>Como criar uma nova branch
+git checkout develop
+git checkout –b release/new_release</p>
+<p>Quando concluir a validação do release, copiar a branch para a branch master
+git checkout master
+git merge release/new_release</p>
+<p>Hotfix Branches
+São alterações que devido a sua criticidade são realizadas diretamente na master.<br>
+As alterações da hotfix devem ser propagadas para a master e para a develop.</p>
+<p>Criando uma branch hotfix copiando as informações da Master
+git checkout master
+git checkout –b hotfix_branch</p>
+<p>Quando concluir o desenvolvimento, realizar merge das alterações com Develop e Master. Após isso deletar a branch hotfix.
+git checkout master
+git merge hotfix_branch
+git checkout develop
+git merge hotfix_branch
+git branch -d hotfix_branch</p>
+<p>GitFlow Commands
+Para facilitar a implantação do GitFlow existe uma biblioteca para o git que facilita a criação e a manutenção da infraestrutura.  Vamos passar aqui pelos principais comandos dessa biblioteca.
+git flow init – Inicializa o projeto git e já cria todas as branches necessárias. Master, development etc.
+git flow feature start new_feature – Cria uma nova branch chamada new_feature copiando as informações da branch develop e a coloca dentro do grupo de features/. Além disso ele faz checkout e coloca a new_feature como branch atual.
+git flow feature finish new_feature – Copia as informações da new_feature para develop e apaga a branch new_feature. Esse comando já realiza o merge e estando tudo ok já faz checkout devolta para a branch develop
+git flow release start 1.0 – ler as informações atuais da branch develop e cria uma branch de release e faz chechout para essa nova branch.
+git flow release finish 1.0 – Copia as informações da branch 1.0 para a master e para develop  e apaga a branch 1.0. Esse comando já realiza o merge e estando tudo ok já faz checkout para a branch master.
+git flow hotfix start hotfix_branch – Copia as informações que estão em produção e cria uma nova branch. Após isso faz checkout para a nova branch criada
+git flow hotfix finish hotfix_branch - Copia as informações da branch 1.0 para a master e para develop  e apaga a branch 1.0. Esse comando já realiza o merge e estando tudo ok já faz checkout para a branch develop.</p>
+<p>Git Commit Message
+Abaixo boas práticas na hora de definir os commits
+Commits atômicos – Aplique as mudanças assim que você as fizer. Cada commit deve estar relacionado a uma única alteração/correção. Se você tiver que adicionar um “e” a sua mensagem de commit provavelmente você não está realizando um commit atômico.
+Referencie os chamados nos commits – É importante que a cada commit você referencie qual chamado ele está relacionado(quando isso é possível). Para os repositórios do redmine basta adicionar uma # e o número do chamado que automaticamente ele vinculará o commite. Exemplo:   refs #51398
+Utilize o padrão Git Karma – É uma forma de escrever mensagens de commit utilizando o seguinte template: </p>
+<p><type>[optional scope]: <description></p>
+<p>[optional body]</p>
+<p>[optional footer(s)]</p>
+<p><type> - Valor sempre em minúsculo que pode ser uma das seguintes opções: 
+feat (nova feature)
+fix (resolução de algum bug)
+docs (mudança ou adição de documentação)
+style (alterações na formatação do projeto)
+refactor (refatorando um Código em produção, ex. renomear uma variável)
+test (adição de testes, correção nos testes)
+chore (Eliminando lixos do código, trechos de códigos não usados etc.)
+<optional scope>: 
+init
+runner
+watcher
+config
+web-server
+proxy
+etc.
+É possível não colocar scope, caso a mudança seja algo global ou tenha dificuldade em escolher apenas um componente.
+<description> Breve resumo das alterações do código. Exemplo: fix: Correção de parsing em array, quando tinhamos vários espaços na string .</p>
+<p><body>: longos bodys devem vir depois de descrições pequenas dando uma contexto maior para o commit. O body deve começar com uma linha branca logo após a descrição.  </p>
+<footer>: O footer deve começar com uma linha branca logo após o body. No footer adicionamos a referência ao chamado/tarefa relacionada(Caso exista). Em caso de mais de um chamado referenciado separar por virgulas. 
+Exemplo: Close #432, #443
+
+ Breaking changes: alteração que inclui uma modificação que quebra a compatibilidade com versões anteriores. Importante salientar a forma que devemos agir para corrigir a incompatibilidade. Exemplo: 
+BREAKING CHANGE:
+
+`port-runner` linha de comando foi alterada para `runner-port`.
+
+Para migrar o projeto, altere todos os commandos, onde você usa `--port-runner`
+para `--runner-port`.
+
+Exemplo de commit:
+fix(middleware): garante que o cabeçalho atende ao RFC 2616
+
+Adiciona uma nova dependência, use `range-parser`. Adapta os testes das dependências anteriores para esse caso.
+
+Fixes #2310
+
+FAQ
+Por que utilizar esse padrão de git flow?
+Ajudará as pessoas de fora do projeto a identificar onde está a versão atual de produção e também quais as features e bugs estão sendo desenvolvidas no momento.
+Facilitará a criação de scripts automatizados para realizar deploy, testes etc, contribuindo assim para a implantação de uma cultura mais Devops na empresa.
+Em que momento fazer a homologação?
+O padrão não define em que momento exato devemos fazer a homologação das alterações, mas nós acreditamos que existem dois momentos que são bons para isso, ou quando a alteração está na branch release ou quando está na branch de feature/bug.
+Quando sei se é um Hotfix ou é um bug?
+Qualquer melhoria/fix/bug urgente que não pode esperar para que façamos todo o processo do flow deve ser tratado como hotfix. Importante que a hotfix está uma exceção e não pode ser a regra do projeto.
+Caso surjam ajustes na branch de release onde fazer os ajustes?
+A ideia é que na release não aconteçam grandes alterações, se espera que o código já esteja bem maduro nesse momento, mas caso ocorram, as alterações na própria branch não sendo necessário criar outras.
+
+Quando duplicar uma branch de feature em duas?
+Surgiu uma demanda em quanto estava fazendo o desenvolvimento, as demandas são complementares ? Elas devem subir juntas? É preciso analisar caso a caso, mas em geral se a nova demanda possui um tamanho significativo é recomendado criar uma nova branch para ela.
+
+Referências
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Lucas Oliveira ",
+  "url" : "https://lucaseduardo101.github.io",
+  "image": "https://lucaseduardo101.github.io//profile.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
